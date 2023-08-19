@@ -3,6 +3,7 @@ package cz.capgemini.javateam.config
 import cz.capgemini.javateam.core.FunCounter
 import cz.capgemini.javateam.core.FunInterceptor
 import cz.capgemini.javateam.core.FunServiceProvider
+import cz.capgemini.javateam.core.SecurityInterceptor
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Configuration
 import org.springframework.web.servlet.config.annotation.EnableWebMvc
@@ -24,5 +25,6 @@ class RestConfig : WebMvcConfigurer {
 
     override fun addInterceptors(registry: InterceptorRegistry) {
         registry.addInterceptor(FunInterceptor(funCounter, funServiceProvider))
+        registry.addInterceptor(SecurityInterceptor())
     }
 }

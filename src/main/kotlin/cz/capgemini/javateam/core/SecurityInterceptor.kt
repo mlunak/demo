@@ -15,8 +15,8 @@ class SecurityInterceptor : HandlerInterceptor {
         return true
     }
 
-    private fun validateToken(token: String) {
-        if (token != "fun") {
+    private fun validateToken(token: String?) {
+        if (token == null || token != "fun") {
             throw FunException("Wrong token", FunErrorType.SECURITY_ISSUE)
         }
     }
