@@ -1,10 +1,13 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 
 @Component({
   selector: 'ffe-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  template: `
+  <div><h1>{{pageTitle}}</h1>
+    <ffe-products></ffe-products>
+  </div>
+`
 })
 export class AppComponent {
-  title = 'FunFrontEnd';
+  pageTitle: string = "Fun Front End Application"
 }
