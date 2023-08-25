@@ -22,9 +22,9 @@ class FunAdvice {
         if (funException.issueType == FunErrorType.SECURITY_ISSUE) {
             return ResponseEntity.of(ProblemDetail.forStatus(HttpStatus.UNAUTHORIZED.value())).build()
         } else if (funException.issueType == FunErrorType.A_BIT_OF_AN_ISSUE) {
-            return ResponseEntity.internalServerError().body(ValuableResponse("Have to warn you for this one"))
+            return ResponseEntity.internalServerError().body(ValuableResponse(null, "Have to warn you for this one"))
         } else {
-            return ResponseEntity.ok(ValuableResponse("You did something wrong but it's okay"))
+            return ResponseEntity.ok(ValuableResponse(null, "You did something wrong but it's okay"))
         }
     }
 }

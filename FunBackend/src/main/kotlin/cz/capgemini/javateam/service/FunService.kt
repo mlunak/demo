@@ -1,12 +1,12 @@
 package cz.capgemini.javateam.service
 
+import cz.capgemini.javateam.dto.ProductLookAlike
+
 /**
  * Service
  */
 
 interface FunService {
 
-    fun getSomeInformation(): String
-
-    fun saveSomeInformation(information: String)
+    fun getSomeProducts(): List<ProductLookAlike>
 }

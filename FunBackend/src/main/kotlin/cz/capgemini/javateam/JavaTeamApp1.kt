@@ -1,5 +1,6 @@
 package cz.capgemini.javateam
 
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
@@ -8,6 +9,7 @@ import org.springframework.boot.runApplication
  */
 
 @SpringBootApplication
+@EnableAutoConfiguration
 class JavaTeamApp1
 
 fun main(args: Array<String>) {

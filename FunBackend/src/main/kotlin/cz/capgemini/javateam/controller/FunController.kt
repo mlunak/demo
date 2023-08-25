@@ -6,6 +6,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse
 import io.swagger.v3.oas.annotations.responses.ApiResponses
 import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.CrossOrigin
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RestController
@@ -14,10 +15,12 @@ import org.springframework.web.bind.annotation.RestController
  * Controller
  */
 @RestController
+@CrossOrigin
 class FunController(
     private val funServiceProvider: FunServiceProvider
 ) {
 
+    //@CrossOrigin(origins = ["http://localhost:4201","http://localhost:4200"])
     @GetMapping(
         path = ["/rest/fun/{version}"],
         produces = [MediaType.APPLICATION_JSON_VALUE]
@@ -33,10 +36,6 @@ class FunController(
         @PathVariable version: String
     ): ResponseEntity<ValuableResponse> {
         val nuf = funServiceProvider.getFun(version)
-        //do sometinhg funny like,
-        //--never call the service version intended, or randomly
-        //--do some logging to files
-        //call some database that is polluted by Kafka public topic on application Start
-        return ResponseEntity.ok(ValuableResponse(nuf.getSomeInformation()))
+        return ResponseEntity.ok(ValuableResponse(nuf.getSomeProducts()))
     }
 }
