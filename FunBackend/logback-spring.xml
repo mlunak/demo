@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+
+    <!-->Console appender taken from Spring defaults, console log pattern overriding Spring default set in application.yml<!-->
+    <!-->RollingFile appender declared here<!-->
+
+    <property name="LOGS" value="C:\GitRepo\JavaTeamApp1\FunBackend\logs\"/>
+
+    <appender name="ROLLER"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOGS}/funLog.log</file>
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>%date{ISO8601} [%thread] %-5level %mdc{callChainId:--} %logger %marker- %.-100000msg%n</pattern>
+        </encoder>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${LOGS}/archive/funLog-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxFileSize>16MB</maxFileSize>
+            <maxHistory>10</maxHistory>
+        </rollingPolicy>
+
+    </appender>
+
+    <root level="info">
+        <appender-ref ref="ROLLER"/>
+        <appender-ref ref="CONSOLE"/>
+    </root>
+
+    <logger name="org.springframework.web" level="debug">
+        <appender-ref ref="ROLLER"/>
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+
+    <logger name="cz.capgemini.javateam" level="trace" additivity="false">
+        <appender-ref ref="ROLLER"/>
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+
+</configuration>

@@ -1,6 +1,6 @@
 package cz.capgemini.javateam.service.impl
 
-import cz.capgemini.javateam.Fun
+import cz.capgemini.javateam.annotation.Fun
 import cz.capgemini.javateam.dto.ProductLookAlike
 import cz.capgemini.javateam.service.FunService
 import org.springframework.stereotype.Service

@@ -4,6 +4,7 @@ import cz.capgemini.javateam.core.FunCounter
 import cz.capgemini.javateam.core.FunInterceptor
 import cz.capgemini.javateam.core.FunServiceProvider
 import cz.capgemini.javateam.core.SecurityInterceptor
+import cz.capgemini.javateam.logging.LoggingInterceptor
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Configuration
 import org.springframework.web.servlet.config.annotation.CorsRegistry
@@ -28,12 +29,13 @@ class RestConfig : WebMvcConfigurer {
     override fun addInterceptors(registry: InterceptorRegistry) {
         registry.addInterceptor(FunInterceptor(funCounter, funServiceProvider))
         registry.addInterceptor(SecurityInterceptor())
+        registry.addInterceptor(LoggingInterceptor())
     }
 
     override fun addCorsMappings(registry: CorsRegistry) {
         registry.addMapping("/**")
             .allowedMethods("*")
-            .allowedOrigins("http://localhost:4201")
-            .maxAge(1800L)
+            .allowedOriginPatterns("http://*:[4201]")
+            .maxAge(1_800L)
     }
 }

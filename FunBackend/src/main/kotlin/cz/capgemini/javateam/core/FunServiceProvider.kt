@@ -1,6 +1,6 @@
 package cz.capgemini.javateam.core
 
-import cz.capgemini.javateam.Fun
+import cz.capgemini.javateam.annotation.Fun
 import cz.capgemini.javateam.exception.FunErrorType
 import cz.capgemini.javateam.exception.FunException
 import cz.capgemini.javateam.service.FunService

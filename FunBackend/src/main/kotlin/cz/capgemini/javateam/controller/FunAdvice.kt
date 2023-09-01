@@ -20,7 +20,9 @@ class FunAdvice {
     @ResponseBody
     fun handleException(funException: FunException): ResponseEntity<ValuableResponse> {
         if (funException.issueType == FunErrorType.SECURITY_ISSUE) {
-            return ResponseEntity.of(ProblemDetail.forStatus(HttpStatus.UNAUTHORIZED.value())).build()
+            val problem = ProblemDetail.forStatus(HttpStatus.UNAUTHORIZED.value());
+            problem.detail = "funny"
+            return ResponseEntity.of(problem).build()
         } else if (funException.issueType == FunErrorType.A_BIT_OF_AN_ISSUE) {
             return ResponseEntity.internalServerError().body(ValuableResponse(null, "Have to warn you for this one"))
         } else {

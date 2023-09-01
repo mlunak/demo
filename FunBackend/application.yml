@@ -1,2 +1,3 @@
 server.port: 6969
-logging.level.org.springframework.web.filter.CommonsRequestLoggingFilter: DEBUG
+logging.pattern.console: "%date{ISO8601} [%thread] %-5level %mdc{callChainId:--} %logger %marker- %.-100000msg%n"
+logging.config: "logback-spring.xml"

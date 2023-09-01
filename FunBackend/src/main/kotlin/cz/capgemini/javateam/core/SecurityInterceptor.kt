@@ -4,15 +4,19 @@ import cz.capgemini.javateam.exception.FunErrorType
 import cz.capgemini.javateam.exception.FunException
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
+import org.springframework.http.HttpMethod
 import org.springframework.web.servlet.HandlerInterceptor
 
 /**
- * Somehow handles security
+ * Somehow handles additional security
  */
 class SecurityInterceptor : HandlerInterceptor {
     override fun preHandle(request: HttpServletRequest, response: HttpServletResponse, handler: Any): Boolean {
+        if (request.method == HttpMethod.OPTIONS.name()) { //CORS
+            return true;
+        }
         validateToken(request.getHeader("FunToken"))
-        return true
+        return true;
     }
 
     private fun validateToken(token: String?) {

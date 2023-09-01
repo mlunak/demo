@@ -12,6 +12,7 @@ class FunInterceptor(
     private val counter: FunCounter,
     private val funServiceProvider: FunServiceProvider
 ) : HandlerInterceptor {
+
     override fun preHandle(request: HttpServletRequest, response: HttpServletResponse, handler: Any): Boolean {
         counter.hits++
         if (counter.hits.mod(5) == 0) {

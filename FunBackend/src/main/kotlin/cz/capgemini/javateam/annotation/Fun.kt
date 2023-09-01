@@ -1,4 +1,4 @@
-package cz.capgemini.javateam
+package cz.capgemini.javateam.annotation
 
 /**
  * Funny annotation for various services
