@@ -1,25 +1,19 @@
 import { Injectable } from "@angular/core";
-import { IProduct } from "./product";
-import { HttpClient, HttpHeaders, HttpErrorResponse } from "@angular/common/http"
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Observable, catchError, tap, throwError } from "rxjs";
 import { ValuableResponse } from "./valuable-response";
-import { environment } from "environment"
+import { environment } from "environment";
 
 @Injectable({
     providedIn: "root"
 })
 export class ProductService {
-    private productUrl = `${environment.backEndURL}/fun/v2`
+    private productUrl = `${environment.backEndURL}/fun/v1`
 
     constructor(private httpClientService: HttpClient) { }
 
     getProducts(): Observable<ValuableResponse> {
-        const headers = new HttpHeaders(
-            {   
-                "funtoken": "fun"
-            }
-        )
-        return this.httpClientService.get<ValuableResponse>(this.productUrl, { "headers": headers }).pipe(
+        return this.httpClientService.get<ValuableResponse>(this.productUrl).pipe(
             tap(data => console.log("The response: " + JSON.stringify(data))),
             catchError(this.handleError)
         )
