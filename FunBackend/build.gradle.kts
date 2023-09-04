@@ -2,6 +2,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 val springDocVersion: String by project
 val commonsIoVersion: String by project
+val funAppDbPwd: String by project
 
 plugins {
     application
@@ -19,6 +20,7 @@ java {
 
 dependencies {
     testImplementation(kotlin("test"))
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.flywaydb:flyway-core")
@@ -26,7 +28,6 @@ dependencies {
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:$springDocVersion")
     implementation("commons-io:commons-io:$commonsIoVersion")
     runtimeOnly("org.postgresql:postgresql")
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
 tasks.test {
@@ -39,4 +40,13 @@ tasks.withType<KotlinCompile> {
 
 application {
     mainClass.set("cz.capgemini.javateam.JavaTeamApp1Kt")
+}
+
+flyway {
+    url = "jdbc:postgresql://10.24.15.160:5432/postgres"
+    user = "funapp"
+    password = funAppDbPwd
+    schemas = arrayOf("funapp")
+    locations = arrayOf("filesystem:./db/migrations/")
+    cleanDisabled = false
 }
