@@ -35,7 +35,7 @@
         <appender-ref ref="CONSOLE"/>
     </logger>
 
-    <logger name="cz.capgemini.javateam" level="trace" additivity="false">
+    <logger name="ml.work.demo" level="trace" additivity="false">
         <appender-ref ref="ROLLER"/>
         <appender-ref ref="CONSOLE"/>
     </logger>

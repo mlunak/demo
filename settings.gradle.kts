@@ -1,2 +1,2 @@
-rootProject.name = "JavaTeamApp1"
+rootProject.name = "MlDemoApp1"
 include("FunBackend", "FunFrontEnd", "FunRepo")

@@ -40,7 +40,7 @@ tasks.withType<KotlinCompile> {
 }
 
 application {
-    mainClass.set("cz.capgemini.javateam.JavaTeamApp1Kt")
+    mainClass.set("ml.work.demo.DemoJavaApp1Kt")
 }
 
 flyway {
