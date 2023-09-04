@@ -10,7 +10,7 @@
 - does nothing useful (so far)
 - is open for your ideas
 
-### Things you need to work with and run this application:
+### Things you may need to work with and run this application:
 
 - [Gradle Wrapper](/gradlew) which should be here (no need to install Gradle separately)
 - OpenJDK17 [RedHat](https://developers.redhat.com/products/openjdk/download) for instance
