@@ -2,8 +2,10 @@
 
 ### This application:
 
-- is using SpringBoot and some other things
-- is written in Kotlin
+- consists of
+  - front end Angular app created with Angular CLI and slightly modified
+  - back end SpringBoot application written in Kotlin
+  - database files for Postgres database (Dockerfile image and Flyway migration scripts)
 - builds with Gradle
 - does nothing useful (so far)
 - is open for your ideas
@@ -19,3 +21,8 @@
 
 -
 Link [GitHub syntax](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
+
+### Some ideas to do:
+
+- dockerize - create docker-compose file, network etc.
+- improve angular front end app, create new screens, improve existing
