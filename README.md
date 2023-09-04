@@ -12,6 +12,7 @@
 
 - [Gradle Wrapper](/gradlew) which should be here (no need to install Gradle separately)
 - OpenJDK17 [RedHat](https://developers.redhat.com/products/openjdk/download) for instance
+- [NodeJS](https://nodejs.org/en/download)
 - Some IDE preferably IDEA
 
 ### How to write this file:
