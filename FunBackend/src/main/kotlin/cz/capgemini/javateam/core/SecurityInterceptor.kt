@@ -12,11 +12,11 @@ import org.springframework.web.servlet.HandlerInterceptor
  */
 class SecurityInterceptor : HandlerInterceptor {
     override fun preHandle(request: HttpServletRequest, response: HttpServletResponse, handler: Any): Boolean {
-        if (request.method == HttpMethod.OPTIONS.name()) { //CORS
-            return true;
+        if (request.method == HttpMethod.OPTIONS.name()) { //if CORS request then OK
+            return true
         }
         validateToken(request.getHeader("FunToken"))
-        return true;
+        return true
     }
 
     private fun validateToken(token: String?) {

@@ -2,39 +2,19 @@ package cz.capgemini.javateam.service.impl
 
 import cz.capgemini.javateam.annotation.Fun
 import cz.capgemini.javateam.dto.ProductLookAlike
+import cz.capgemini.javateam.dto.fromDto
+import cz.capgemini.javateam.repository.entity.SomeProductRepository
 import cz.capgemini.javateam.service.FunService
 import org.springframework.stereotype.Service
-import java.math.BigDecimal
 
 /**
- * whatever
+ * Service providing data. Nothing surprising.
  */
 @Service
 @Fun
-class FunServiceImplV1() : FunService {
+class FunServiceImplV1(private val someProductRepository: SomeProductRepository) : FunService {
 
     override fun getSomeProducts(): List<ProductLookAlike> {
-        return listOf(
-            ProductLookAlike(
-                1,
-                "Leaf Rake",
-                "GDN-0011",
-                "March 19, 2021",
-                "Leaf rake with 48-inch wooden handle.",
-                BigDecimal.valueOf(19.95),
-                BigDecimal.valueOf(3.2),
-                "assets/images/leaf_rake.png"
-            ),
-            ProductLookAlike(
-                2,
-                "Garden Cart",
-                "GDN-0023",
-                "March 18, 2021",
-                "15 gallon capacity rolling garden cart",
-                BigDecimal.valueOf(32.01),
-                BigDecimal.valueOf(4.4),
-                "assets/images/v.png"
-            )
-        )
+        return someProductRepository.findAll().map { fromDto(it) }
     }
 }

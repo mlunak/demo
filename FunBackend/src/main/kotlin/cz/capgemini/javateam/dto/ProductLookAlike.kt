@@ -1,7 +1,9 @@
 package cz.capgemini.javateam.dto
 
+import cz.capgemini.javateam.repository.entity.SomeProduct
 import io.swagger.v3.oas.annotations.media.Schema
 import java.math.BigDecimal
+import java.time.format.DateTimeFormatter
 
 /**
  * @author Stefan Holecko RIP
@@ -23,4 +25,26 @@ data class ProductLookAlike(
     val starRating: BigDecimal,
     @field:Schema(description = "Where to get the image")
     val imageUrl: String
+)
+
+fun fromDto(someProduct: SomeProduct): ProductLookAlike = ProductLookAlike(
+    someProduct.productId!!.toLong(),
+    someProduct.productName,
+    someProduct.productCode,
+    someProduct.releaseDate.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")),
+    someProduct.description,
+    someProduct.price,
+    someProduct.starRating,
+    someProduct.imageUrl
+)
+
+fun fromDtoSurprise(someProduct: SomeProduct, description: String): ProductLookAlike = ProductLookAlike(
+    someProduct.productId!!.toLong(),
+    someProduct.productName,
+    someProduct.productCode,
+    someProduct.releaseDate.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")),
+    description,
+    someProduct.price,
+    someProduct.starRating,
+    someProduct.imageUrl
 )

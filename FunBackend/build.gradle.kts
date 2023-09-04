@@ -27,6 +27,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:$springDocVersion")
     implementation("commons-io:commons-io:$commonsIoVersion")
+    implementation(project(":FunRepo"))
     runtimeOnly("org.postgresql:postgresql")
 }
 

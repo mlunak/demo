@@ -1,2 +1,2 @@
 rootProject.name = "JavaTeamApp1"
-include("FunBackend", "FunFrontEnd")
+include("FunBackend", "FunFrontEnd", "FunRepo")

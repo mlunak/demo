@@ -1,3 +1,18 @@
 server.port: 6969
 logging.pattern.console: "%date{ISO8601} [%thread] %-5level %mdc{callChainId:--} %logger %marker- %.-100000msg%n"
 logging.config: "logback-spring.xml"
+
+spring:
+  datasource:
+    name: "funDb"
+    url: "jdbc:postgresql://10.24.15.160:5432/postgres"
+    username: "funapp"
+    password: "funapp"
+    driverClassName: "org.postgresql.Driver"
+    hikari:
+      maximumPoolSize: 5
+      idleTimeout: 30000
+      maxLifeTime: 600000
+      connectionTimeout: 10000
+  flyway:
+    enabled: false
